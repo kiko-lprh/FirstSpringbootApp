@@ -8,6 +8,7 @@ class CharactersApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

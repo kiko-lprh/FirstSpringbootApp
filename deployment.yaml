@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-api-deployment
+spec:
+  replicas: 1 # Number of desired pods
+  selector:
+    matchLabels:
+      app: springboot-api
+  template:
+    metadata:
+      labels:
+        app: springboot-api
+    spec:
+      containers:
+        - name: springboot-api-container
+          image: dcordero7/springapp:latest
+          ports:
+            - containerPort: 6559
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-api-service
+spec:
+  selector:
+    app: springboot-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 6559 # Port your Spring Boot app is listening on
+  type: LoadBalancer # Expose the service outside the cluster

@@ -4,4 +4,4 @@ FROM node:18-alpine
 WORKDIR /app
 COPY . .
 CMD ["node", "src/main/java/com/kiko/opc/CharactersApplication.java"]
-EXPOSE 3000
+EXPOSE 6559
