@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: springboot-api-deployment
 spec:
-  replicas: 1 # Number of desired pods
+  replicas: 1
   selector:
     matchLabels:
       app: springboot-api
@@ -28,5 +28,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 6559 # Port your Spring Boot app is listening on
-  type: LoadBalancer # Expose the service outside the cluster
+      targetPort: 6559
+  type: NodePort
