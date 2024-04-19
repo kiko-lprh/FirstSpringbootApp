@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodeapp-service
+  name: springboot-service
 spec:
   selector:
-    app: nodeapp
+    app: springboot
   type: LoadBalancer
   ports:
     - protocol: TCP
