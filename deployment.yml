@@ -18,7 +18,8 @@ spec:
         - name: spring-container
           image: dcordero7/springapp:latest
           ports:
-            - containerPort: 6559
+            - containerPort: 6559  # Your application port
+              # Leave protocol: TCP as default (assuming TCP)
 
 
 ---
@@ -30,9 +31,9 @@ metadata:
 spec:
   selector:
     app: springboot
-  type: LoadBalancer
+  type: LoadBalancer  # Adjust if needed (e.g., NodePort)
   ports:
     - protocol: TCP
-      port: 5000
-      targetPort: 6559
-      nodePort: 54371
+      port: 80  # External port to access the service (e.g., 80)
+      targetPort: 6559  # Map to the container port
+      # Optional: nodePort: 30000 (if using NodePort service type)
