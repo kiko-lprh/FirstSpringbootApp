@@ -1,32 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springboot-api-deployment
+  name: springboot-deployment
+  labels:
+    app: springboot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: springboot-api
+      app: springboot
   template:
     metadata:
       labels:
-        app: springboot-api
+        app: springboot
     spec:
       containers:
-        - name: springboot-api-container
+        - name: spring-container
           image: dcordero7/springapp:latest
           ports:
             - containerPort: 6559
+
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: springboot-api-service
+  name: nodeapp-service
 spec:
   selector:
-    app: springboot-api
+    app: nodeapp
+  type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 80
+      port: 5000
       targetPort: 6559
-  type: NodePort
+      nodePort: 54371
